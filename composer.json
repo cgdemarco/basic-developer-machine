@@ -1,0 +1,30 @@
+{
+    "name": "generic app",
+    "license": "MIT",
+    "type": "project",
+    "description": "Generic app composer",
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.1",
+        "phpmd/phpmd": "^2.3",
+        "squizlabs/php_codesniffer": "^2.5"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "phpmd": "./bin/phpmd src/ text codesize,unusedcode,naming,design  --exclude Tests",
+        "phpcs": "./bin/phpcs  --standard=PSR2 src/",
+        "precommit": [
+            "@test",
+            "@phpmd",
+            "@phpcs"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
